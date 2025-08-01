@@ -1,69 +1,128 @@
-# React + TypeScript + Vite
+# Pemilu Ketua BEM FH UNISBA 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistem pemungutan suara elektronik untuk pemilihan Ketua dan Wakil Ketua BEM Fakultas Hukum Universitas Islam Bandung tahun 2025.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Website dapat diakses di: [https://reihand81.github.io/pemilu/](https://reihand81.github.io/pemilu/)
 
-## Expanding the ESLint configuration
+## ✨ Fitur
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Sistem Login Aman**: Autentikasi menggunakan NIM dan OTP
+- **Profil Kandidat**: Informasi lengkap visi, misi, dan program kerja
+- **Pemungutan Suara**: Interface voting yang user-friendly
+- **Real-time Results**: Hasil sementara yang diperbarui secara real-time
+- **Responsive Design**: Optimized untuk desktop dan mobile
+- **Animasi Smooth**: Menggunakan Framer Motion untuk UX yang menarik
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Teknologi
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS + Radix UI
+- **Animasi**: Framer Motion
+- **Charts**: Recharts
+- **Build Tool**: Vite
+- **Deployment**: GitHub Pages
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📱 Halaman
+
+1. **Beranda**: Informasi umum dan countdown
+2. **Profil Kandidat**: Detail lengkap setiap pasangan calon
+3. **Login**: Sistem autentikasi dengan NIM dan OTP
+4. **Verifikasi**: Konfirmasi data pemilih
+5. **Pemungutan Suara**: Interface voting
+6. **Hasil**: Real-time vote counting
+7. **Completion**: Konfirmasi selesai voting
+
+## 🔧 Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm atau yarn
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/reihand81/pemilu.git
+cd pemilu
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Deployment
+
+Project ini menggunakan GitHub Actions untuk automatic deployment ke GitHub Pages. Setiap push ke branch `master` akan trigger deployment otomatis.
+
+### Manual Deployment
+
+```bash
+# Build project
+npm run build
+
+# Deploy ke GitHub Pages
+npm run deploy
 ```
+
+## 🔒 Keamanan
+
+- **Data Encryption**: Semua data sensitif dienkripsi
+- **IP Logging**: Setiap aktivitas login dicatat
+- **One-time Voting**: Satu NIM hanya bisa voting sekali
+- **OTP Verification**: Verifikasi ganda dengan email
+
+## 📊 Struktur Project
+
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── figma/          # Custom components
+│   └── *.tsx           # Page components
+├── styles/             # Global styles
+├── assets/             # Static assets
+└── guidelines/         # Development guidelines
+```
+
+## 🤝 Contributing
+
+1. Fork repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## 📄 License
+
+Project ini dibuat untuk keperluan internal BEM FH UNISBA 2025.
+
+## 👥 Tim Pengembang
+
+- **Frontend Developer**: [reihand81](https://github.com/reihand81)
+- **UI/UX Design**: Tim BEM FH UNISBA
+- **Project Manager**: Panitia Pemilu BEM FH UNISBA
+
+## 📞 Kontak
+
+Untuk pertanyaan atau dukungan teknis, hubungi:
+- Email: bem.fhunisba@gmail.com
+- Instagram: @bemfhunisba
+
+---
+
+**© 2025 BEM Fakultas Hukum Universitas Islam Bandung**
