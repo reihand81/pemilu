@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription, SheetHeader } from "./ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, Settings } from "lucide-react";
 
 interface HeaderProps {
   currentPage: string;
@@ -54,13 +54,24 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Desktop Login Button */}
-          <Button 
-            onClick={() => onNavigate('login')}
-            className="hidden md:flex bg-blue-600 hover:bg-blue-700"
-          >
-            Login untuk Memilih
-          </Button>
+          {/* Desktop Login Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Button 
+              onClick={() => onNavigate('login')}
+              className="bg-blue-600 hover:bg-blue-700"
+            >
+              Login untuk Memilih
+            </Button>
+            <Button 
+              onClick={() => onNavigate('admin-login')}
+              variant="outline"
+              size="sm"
+              className="border-gray-300 text-gray-700 hover:bg-gray-50"
+            >
+              <Settings className="w-4 h-4 mr-2" />
+              Admin
+            </Button>
+          </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden">
@@ -110,13 +121,21 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                     </div>
                   </nav>
 
-                  {/* Mobile Login Button */}
-                  <div className="pt-6 border-t">
+                  {/* Mobile Login Buttons */}
+                  <div className="pt-6 border-t space-y-3">
                     <Button 
                       onClick={() => handleNavigate('login')}
                       className="w-full bg-blue-600 hover:bg-blue-700"
                     >
                       Login untuk Memilih
+                    </Button>
+                    <Button 
+                      onClick={() => handleNavigate('admin-login')}
+                      variant="outline"
+                      className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
+                    >
+                      <Settings className="w-4 h-4 mr-2" />
+                      Login Admin
                     </Button>
                   </div>
                 </div>

@@ -11,6 +11,8 @@ import { ResultsPage } from "./components/ResultsPage";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { ContactWidget } from "./components/ContactWidget";
 import { ServerStatusAlert } from "./components/ServerStatusAlert";
+import { AdminLoginPage } from "./components/AdminLoginPage";
+import { AdminDashboard } from "./components/AdminDashboard";
 
 type Page =
   | "home"
@@ -20,6 +22,8 @@ type Page =
   | "voting"
   | "completion"
   | "results"
+  | "admin-login"
+  | "admin-dashboard"
   | "404";
 
 const pageVariants = {
@@ -45,9 +49,18 @@ const pageTransition = {
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
   const handleNavigate = (page: string) => {
     setCurrentPage(page as Page);
+  };
+
+  const handleAdminLogin = () => {
+    setIsAdminLoggedIn(true);
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdminLoggedIn(false);
   };
 
   const renderPage = () => {
@@ -66,6 +79,15 @@ export default function App() {
         return <CompletionPage onNavigate={handleNavigate} />;
       case "results":
         return <ResultsPage onNavigate={handleNavigate} />;
+      case "admin-login":
+        return <AdminLoginPage onNavigate={handleNavigate} onAdminLogin={handleAdminLogin} />;
+      case "admin-dashboard":
+        if (!isAdminLoggedIn) {
+          // Redirect to admin login if not authenticated
+          setCurrentPage("admin-login");
+          return <AdminLoginPage onNavigate={handleNavigate} onAdminLogin={handleAdminLogin} />;
+        }
+        return <AdminDashboard onNavigate={handleNavigate} onAdminLogout={handleAdminLogout} />;
       case "404":
         return <NotFoundPage onNavigate={handleNavigate} />;
       default:
@@ -82,7 +104,9 @@ export default function App() {
         {currentPage !== "login" &&
           currentPage !== "verification" &&
           currentPage !== "voting" &&
-          currentPage !== "completion" && (
+          currentPage !== "completion" &&
+          currentPage !== "admin-login" &&
+          currentPage !== "admin-dashboard" && (
             <motion.div
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}

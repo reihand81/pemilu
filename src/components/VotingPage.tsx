@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { motion } from 'motion/react';
+import { useState } from "react";
+import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -12,7 +12,9 @@ interface VotingPageProps {
 }
 
 export function VotingPage({ onNavigate }: VotingPageProps) {
-  const [selectedCandidate, setSelectedCandidate] = useState<number | null>(null);
+  const [selectedCandidate, setSelectedCandidate] = useState<number | null>(
+    null
+  );
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const candidates = [
@@ -21,25 +23,31 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
       number: "01",
       ketua: "Ahmad Fauzan",
       wakil: "Siti Nurhaliza",
-      ketuaPhoto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
-      wakilPhoto: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop"
+      ketuaPhoto:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+      wakilPhoto:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop",
     },
     {
       id: 2,
-      number: "02", 
+      number: "02",
       ketua: "Budi Santoso",
       wakil: "Rina Permata",
-      ketuaPhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
-      wakilPhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop"
+      ketuaPhoto:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
+      wakilPhoto:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
     },
     {
       id: 3,
       number: "03",
-      ketua: "Dian Sastika", 
+      ketua: "Dian Sastika",
       wakil: "Rio Pratama",
-      ketuaPhoto: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=200&h=200&fit=crop",
-      wakilPhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop"
-    }
+      ketuaPhoto:
+        "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=200&h=200&fit=crop",
+      wakilPhoto:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop",
+    },
   ];
 
   const handleVote = (candidateId: number) => {
@@ -49,14 +57,16 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
 
   const confirmVote = () => {
     // Process vote
-    onNavigate('completion');
+    onNavigate("completion");
   };
 
-  const selectedCandidateData = candidates.find(c => c.id === selectedCandidate);
+  const selectedCandidateData = candidates.find(
+    (c) => c.id === selectedCandidate
+  );
 
   if (showConfirmation && selectedCandidateData) {
     return (
-      <motion.div 
+      <motion.div
         className="min-h-screen bg-gray-50 flex items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -69,16 +79,16 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
         >
           <Card className="max-w-md w-full p-8 text-center">
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: [0, 10, -10, 0],
-                scale: [1, 1.1, 1]
+                scale: [1, 1.1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             >
               <AlertTriangle className="w-16 h-16 text-orange-500 mx-auto mb-6" />
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-2xl font-bold mb-4"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -86,8 +96,8 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
             >
               Konfirmasi Pilihan
             </motion.h1>
-            
-            <motion.div 
+
+            <motion.div
               className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -101,9 +111,9 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                   PASLON {selectedCandidateData.number}
                 </Badge>
               </motion.div>
-              
+
               <div className="flex justify-center space-x-4 mb-4">
-                <motion.div 
+                <motion.div
                   className="text-center"
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -119,10 +129,12 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                       className="w-16 h-16 rounded-full mx-auto mb-2"
                     />
                   </motion.div>
-                  <p className="text-sm font-medium">{selectedCandidateData.ketua}</p>
+                  <p className="text-sm font-medium">
+                    {selectedCandidateData.ketua}
+                  </p>
                 </motion.div>
-                
-                <motion.div 
+
+                <motion.div
                   className="text-center"
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -138,7 +150,9 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                       className="w-16 h-16 rounded-full mx-auto mb-2"
                     />
                   </motion.div>
-                  <p className="text-sm font-medium">{selectedCandidateData.wakil}</p>
+                  <p className="text-sm font-medium">
+                    {selectedCandidateData.wakil}
+                  </p>
                 </motion.div>
               </div>
             </motion.div>
@@ -151,14 +165,17 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
               <Alert className="border-orange-200 bg-orange-50 mb-6">
                 <AlertTriangle className="w-4 h-4 text-orange-600" />
                 <AlertDescription className="text-orange-700">
-                  <strong>Apakah Anda yakin memilih Paslon No. {selectedCandidateData.number}?</strong>
+                  <strong>
+                    Apakah Anda yakin memilih Paslon No.{" "}
+                    {selectedCandidateData.number}?
+                  </strong>
                   <br />
                   Pilihan tidak dapat diubah setelah dikonfirmasi.
                 </AlertDescription>
               </Alert>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="space-y-3"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -168,7 +185,7 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
+                <Button
                   onClick={confirmVote}
                   className="w-full bg-green-600 hover:bg-green-700"
                 >
@@ -176,13 +193,13 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                   Ya, Pilih Sekarang
                 </Button>
               </motion.div>
-              
+
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setShowConfirmation(false)}
                   className="w-full"
                 >
@@ -199,20 +216,19 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <motion.div 
+        <motion.div
           className="text-center mb-8"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          >
+          <motion.div>
             <Vote className="w-16 h-16 text-blue-600 mx-auto mb-4" />
           </motion.div>
           <h1 className="text-3xl font-bold">Pemungutan Suara</h1>
-          <p className="text-gray-600 mt-2">Pilih satu pasangan calon yang Anda dukung</p>
+          <p className="text-gray-600 mt-2">
+            Pilih satu pasangan calon yang Anda dukung
+          </p>
         </motion.div>
 
         <motion.div
@@ -223,13 +239,14 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
           <Alert className="border-blue-200 bg-blue-50 mb-8 max-w-2xl mx-auto">
             <Vote className="w-4 h-4 text-blue-600" />
             <AlertDescription className="text-blue-700">
-              <strong>Petunjuk:</strong> Klik tombol "PILIH" di bawah pasangan calon yang Anda dukung. 
-              Pastikan pilihan Anda sudah tepat karena tidak dapat diubah setelah dikonfirmasi.
+              <strong>Petunjuk:</strong> Klik tombol "PILIH" di bawah pasangan
+              calon yang Anda dukung. Pastikan pilihan Anda sudah tepat karena
+              tidak dapat diubah setelah dikonfirmasi.
             </AlertDescription>
           </Alert>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8"
           initial="hidden"
           animate="visible"
@@ -238,35 +255,35 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.2
-              }
-            }
+                staggerChildren: 0.2,
+              },
+            },
           }}
         >
           {candidates.map((candidate, index) => (
             <motion.div
               key={candidate.id}
               variants={{
-                hidden: { 
-                  opacity: 0, 
+                hidden: {
+                  opacity: 0,
                   y: 50,
-                  rotateX: -30
+                  rotateX: -30,
                 },
-                visible: { 
-                  opacity: 1, 
+                visible: {
+                  opacity: 1,
                   y: 0,
                   rotateX: 0,
                   transition: {
                     duration: 0.8,
                     type: "spring",
-                    stiffness: 100
-                  }
-                }
+                    stiffness: 100,
+                  },
+                },
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.03,
                 rotateY: 5,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+                boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
               }}
               transition={{ duration: 0.3 }}
             >
@@ -279,7 +296,7 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                     PASLON {candidate.number}
                   </Badge>
                 </motion.div>
-                
+
                 <div className="space-y-6 mb-8">
                   {/* Ketua */}
                   <motion.div
@@ -329,7 +346,7 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
                 >
-                  <Button 
+                  <Button
                     onClick={() => handleVote(candidate.id)}
                     className="w-full bg-green-600 hover:bg-green-700 text-lg py-3"
                   >
@@ -342,19 +359,16 @@ export function VotingPage({ onNavigate }: VotingPageProps) {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button 
-              variant="outline" 
-              onClick={() => onNavigate('candidates')}
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              variant="outline"
+              onClick={() => onNavigate("candidates")}
               className="mr-4"
             >
               <Users className="w-4 h-4 mr-2" />
